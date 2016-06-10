@@ -1,0 +1,17 @@
+default: &default
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: gas_development
+
+test:
+  <<: *default
+  database: gas_test
+
+production:
+  <<: *default
+  adapter: postgresql
+  database: gast_production
