@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :docs
+
   get '*path' => redirect('/')
 end

@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 
 gem 'bcrypt'
 
+gem 'google-api-client'
+gem 'googleauth'
+gem 'havenondemand'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 

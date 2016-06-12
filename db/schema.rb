@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610010322) do
+ActiveRecord::Schema.define(version: 20160612144513) do
+
+  create_table "docs", force: :cascade do |t|
+    t.string  "name",           limit: 255,   null: false
+    t.text    "description",    limit: 65535
+    t.text    "content",        limit: 65535
+    t.binary  "raw_data",       limit: 65535
+    t.string  "classification", limit: 255
+    t.integer "user_id",        limit: 4
+  end
+
+  add_index "docs", ["classification"], name: "index_docs_on_classification", using: :btree
+  add_index "docs", ["user_id"], name: "fk_rails_b979a2ca95", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255,              null: false
@@ -37,4 +49,5 @@ ActiveRecord::Schema.define(version: 20160610010322) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "docs", "users"
 end
